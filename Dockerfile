@@ -47,15 +47,18 @@ RUN chown -R node:node /app
 # Create node user's bun directory
 RUN mkdir -p /home/node/.bun && chown -R node:node /home/node/.bun
 
+# Create data directory with proper permissions
+RUN mkdir -p /app/data && chown -R node:node /app/data
+
 # Switch to non-root user
 USER node
 
-
-# Environment variables should be provided at runtime (e.g., via docker-compose.yaml)
+# Set environment variables for containerized deployment
+ENV ELIZA_DATA_DIR=/app/data
+ENV NODE_ENV=production
 
 # Expose port (adjust if needed based on your application)
 EXPOSE 3000
-
 
 # Start the application
 CMD ["elizaos", "start"]

@@ -178,6 +178,7 @@ The test utilities in `__tests__/utils/` provide helper functions to simplify wr
    TWITTER_ACCESS_TOKEN=your_access_token
    TWITTER_ACCESS_TOKEN_SECRET=your_access_token_secret
    OPENAI_API_KEY=your_openai_key
+   ELIZA_DATA_DIR=/app/data
    POSTING_INTERVAL_MINUTES=60
    MAX_TWEETS_PER_DAY=24
    ```

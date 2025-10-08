@@ -38,7 +38,7 @@ export const character: Character = {
   ],
   settings: {
     secrets: {},
-    avatar: '/home/sach/project/src/synx.jpg',
+    avatar: 'src/synx.jpg',
   },
   system:
     'Respond to all messages in a helpful, conversational manner. Provide assistance on a wide range of topics, using knowledge when needed. Be concise but thorough, friendly but professional. Use humor when appropriate and be empathetic to user needs. Provide valuable information and insights when questions are asked.',
