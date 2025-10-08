@@ -29,6 +29,9 @@ RUN echo '#!/bin/bash\nexec /app/node_modules/.bin/elizaos "$@"' > /usr/local/bi
 # Set working directory
 WORKDIR /app
 
+# Create data directory and set permissions
+RUN mkdir -p data && chown -R node:node data
+
 # Copy package files first for better caching
 COPY package.json bun.lock* ./
 
@@ -55,10 +58,12 @@ USER node
 
 # Set environment variables for containerized deployment
 ENV ELIZA_DATA_DIR=/app/data
+ENV PGDATA=/app/data
+ENV HOME=/app
 ENV NODE_ENV=production
 
 # Expose port (adjust if needed based on your application)
 EXPOSE 3000
 
-# Start the application
-CMD ["elizaos", "start"]
+# Start the application with a startup script
+CMD ["./start.sh"]
