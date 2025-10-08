@@ -10,7 +10,7 @@ export const character: Character = {
   name: 'Synx',
   plugins: [
     // Core plugins first
-    '@elizaos/plugin-sql',
+    // '@elizaos/plugin-sql', // Temporarily disabled for deployment
 
     // Text-only plugins (no embedding support)
     ...(process.env.ANTHROPIC_API_KEY?.trim() ? ['@elizaos/plugin-anthropic'] : []),
