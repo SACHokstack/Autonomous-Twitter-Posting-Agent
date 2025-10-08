@@ -1,28 +1,68 @@
-# Project Starter
+# Autonomous Twitter Posting Agent
 
-This is the starter template for ElizaOS projects.
+An AI-powered Twitter automation agent built with ElizaOS that can autonomously create and post tweets based on configured parameters and personality.
 
 ## Features
 
-- Pre-configured project structure for ElizaOS development
-- Comprehensive testing setup with component and e2e tests
-- Default character configuration with plugin integration
-- Example service, action, and provider implementations
-- TypeScript configuration for optimal developer experience
-- Built-in documentation and examples
+- 🤖 Autonomous tweet generation using AI models (OpenAI, Google Gemini, etc.)
+- 🐦 Direct Twitter integration via Twitter API
+- 🎭 Customizable character/personality for unique tweet styles
+- 📊 Analytics and performance tracking
+- 🔄 Scheduled posting with configurable intervals
+- 🎯 Targeted content based on trends and topics
+- 📱 Responsive web dashboard for monitoring
+- 🧪 Comprehensive testing suite (component + e2e)
+- 🐳 Docker support for easy deployment
+- 🚀 Railway deployment ready
 
 ## Getting Started
 
+### Prerequisites
+
+- Node.js 18+ or Bun
+- Twitter Developer Account with API v2 access
+- GitHub account for deployment
+
+### Quick Setup
+
 ```bash
-# Create a new project
-elizaos create -t project my-project
-# Dependencies are automatically installed and built
+# Clone the repository
+git clone https://github.com/SACHokstack/Autonomous-Twitter-Posting-Agent.git
+cd Autonomous-Twitter-Posting-Agent
 
-# Navigate to the project directory
-cd my-project
+# Install dependencies
+bun install
 
-# Start development immediately
+# Copy environment configuration
+cp .env.example .env
+
+# Configure your Twitter API keys in .env
+# Get keys from https://developer.twitter.com/
+
+# Start development server
 elizaos dev
+```
+
+### Environment Configuration
+
+Edit `.env` file with your credentials:
+
+```env
+# Twitter API Configuration
+TWITTER_API_KEY=your_api_key
+TWITTER_API_SECRET=your_api_secret
+TWITTER_ACCESS_TOKEN=your_access_token
+TWITTER_ACCESS_TOKEN_SECRET=your_access_token_secret
+
+# AI Model Configuration (choose one)
+OPENAI_API_KEY=your_openai_key
+GOOGLE_GENAI_API_KEY=your_google_key
+OLLAMA_BASE_URL=http://localhost:11434
+
+# Posting Configuration
+POSTING_INTERVAL_MINUTES=60
+MAX_TWEETS_PER_DAY=24
+TIMEZONE=America/New_York
 ```
 
 ## Development
@@ -114,9 +154,50 @@ export default new ProjectTestSuite();
 
 The test utilities in `__tests__/utils/` provide helper functions to simplify writing tests.
 
+## Deployment
+
+### Railway (Recommended)
+
+1. **Connect Repository**
+   - Go to [Railway.app](https://railway.app)
+   - Connect your GitHub repository
+   - Railway auto-detects the Node.js app
+
+2. **Environment Variables**
+   - Add all environment variables from `.env` in Railway dashboard
+   - Ensure Twitter API keys are properly configured
+
+3. **Deploy**
+   - Push to main branch to trigger auto-deployment
+   - Railway will build and deploy automatically
+
+### Docker Deployment
+
+```bash
+# Build the image
+docker build -t twitter-agent .
+
+# Run locally
+docker run -p 3000:3000 --env-file .env twitter-agent
+
+# Or use docker-compose
+docker-compose up
+```
+
 ## Configuration
 
-Customize your project by modifying:
+Customize your Twitter agent by modifying:
 
-- `src/index.ts` - Main entry point
-- `src/character.ts` - Character definition
+- `src/character.ts` - Define the agent's personality, topics, and posting style
+- `src/index.ts` - Main entry point and plugin configuration
+- `.env` - API keys and posting parameters
+
+### Character Customization
+
+Edit `src/character.ts` to define:
+
+- **Personality**: How the agent should behave
+- **Topics**: What subjects to tweet about
+- **Style**: Writing tone and format
+- **Bio**: Twitter profile description
+- **Posting Rules**: When and what to post
