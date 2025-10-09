@@ -156,7 +156,40 @@ The test utilities in `__tests__/utils/` provide helper functions to simplify wr
 
 ## Deployment
 
-### Railway (Recommended)
+### Render (Recommended)
+
+1. **Create New Web Service**
+   - Go to [render.com](https://render.com)
+   - Click "New +" → "Web Service"
+   - Connect your GitHub repository: `SACHokstack/Autonomous-Twitter-Posting-Agent`
+
+2. **Service Configuration**
+   - **Name**: `autonomous-twitter-agent` (or your preferred name)
+   - **Environment**: Docker (auto-detected)
+   - **Branch**: `main`
+   - **Region**: Choose closest to your users (Oregon recommended)
+   - **Instance Type**: Free tier for testing, Starter ($7/month) for production
+
+3. **Environment Variables**
+   Add these environment variables in Render dashboard:
+   ```
+   TWITTER_API_KEY=your_api_key
+   TWITTER_API_SECRET=your_api_secret
+   TWITTER_ACCESS_TOKEN=your_access_token
+   TWITTER_ACCESS_TOKEN_SECRET=your_access_token_secret
+   OPENAI_API_KEY=your_openai_key
+   ELIZA_DATA_DIR=/app/data
+   PGDATA=/app/data
+   POSTING_INTERVAL_MINUTES=60
+   MAX_TWEETS_PER_DAY=24
+   ```
+
+4. **Deploy**
+   - Click "Create Web Service"
+   - Render will build from Dockerfile and deploy automatically
+   - Your app will be available at `https://your-service-name.onrender.com`
+
+### Railway (Alternative)
 
 1. **Connect Repository**
    - Go to [Railway.app](https://railway.app)
