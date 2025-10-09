@@ -15,6 +15,7 @@ import {
   logger,
 } from '@elizaos/core';
 import { z } from 'zod';
+import { handleMentionAction } from './twitter-plugin';
 
 /**
  * Define the configuration schema for the plugin with the following properties:
@@ -274,7 +275,7 @@ const plugin: Plugin = {
     ],
   },
   services: [StarterService],
-  actions: [helloWorldAction],
+  actions: [helloWorldAction, handleMentionAction],
   providers: [helloWorldProvider],
 };
 
