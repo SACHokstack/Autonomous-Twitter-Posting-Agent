@@ -25,6 +25,7 @@ async function summarizeUrl(url: string): Promise<string> {
 // Custom mention handler
 const handleMentionAction: Action = {
   name: "HANDLE_MENTION",
+  similes: ["MENTION", "TAG", "SUMMARIZE", "REMIND"],
   description: "Process mention commands",
 
   validate: async (_runtime, _message, _state) => true,
@@ -43,6 +44,7 @@ const handleMentionAction: Action = {
         await callback({
           text: `Summary: ${summary}`,
         });
+        return { success: true };
       }
     }
 
@@ -68,11 +70,45 @@ const handleMentionAction: Action = {
         await callback({
           text: `I'll remind you in ${amount} ${unit}! ⏰`,
         });
+        return { success: true };
       }
     }
 
-    return { success: true };
-  }
+    return { success: false };
+  },
+
+  examples: [
+    [
+      {
+        name: '{{name1}}',
+        content: {
+          text: '@bot summarize https://example.com',
+        },
+      },
+      {
+        name: 'Bot',
+        content: {
+          text: 'Summary: This is a placeholder summary.',
+          actions: ['HANDLE_MENTION'],
+        },
+      },
+    ],
+    [
+      {
+        name: '{{name1}}',
+        content: {
+          text: '@bot remind me to check email in 30 minutes',
+        },
+      },
+      {
+        name: 'Bot',
+        content: {
+          text: "I'll remind you in 30 minutes! ⏰",
+          actions: ['HANDLE_MENTION'],
+        },
+      },
+    ],
+  ],
 };
 
 /**
