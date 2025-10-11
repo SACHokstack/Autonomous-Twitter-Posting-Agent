@@ -42,13 +42,13 @@ export const character: Character = {
   settings: {
     secrets: {},
     avatar: 'src/synx.jpg',
-    TWITTER_SEARCH_ENABLE: "true",
+    TWITTER_SEARCH_ENABLE: "false",
     TWITTER_AUTO_RESPOND_MENTIONS: "true",
     TWITTER_AUTO_RESPOND_REPLIES: "true",
-    TWITTER_POST_ENABLE: "false",
-    TWITTER_POLL_INTERVAL: "60",
-    TWITTER_INTERACTION_INTERVAL_MIN: "5",
-    TWITTER_INTERACTION_INTERVAL_MAX: "15"
+    TWITTER_POST_ENABLE: "true",
+    TWITTER_POLL_INTERVAL: "900",
+    TWITTER_INTERACTION_INTERVAL_MIN: "90",
+    TWITTER_INTERACTION_INTERVAL_MAX: "150"
   },
   system:
     'Respond to all messages in a helpful, conversational manner. Provide assistance on a wide range of topics, using knowledge when needed. Be concise but thorough, friendly but professional. Use humor when appropriate and be empathetic to user needs. Provide valuable information and insights when questions are asked.',
